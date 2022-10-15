@@ -46,7 +46,7 @@ export default function Home() {
         if (err) {
           setError({...error, otpError: true});
         } else {
-          router.push("/page");
+          router.push("/hamster");
         }
 
       }
