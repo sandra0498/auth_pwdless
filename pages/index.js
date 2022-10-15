@@ -55,9 +55,44 @@ export default function Home() {
 
   return(
     <div className={styles.container}>
+      {
+        !success && (
+          <form onSubmit={handleAuth}>
+            <input 
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className={styles.input}
+            placeholder="enter email"
+            required
+            />
 
+            <button className={styles.button}>Get hamster pic </button>
+            {error.emailError && (
+              <p className={styles.error}> Error sending email </p>
+            )}
+          </form>
+        )
+      }
+
+      {
+        success && (
+          <form onSubmit={handleVerifyToken}>
+            <input 
+            type="number"
+            value={otp}
+            onChange={(e) => setOtp(e.target.value)}
+            className={styles.input}
+            placeholder="input token"
+            required
+            />
+            <button className={styles.button}> Verify Token</button>
+            {
+              error.otpError && (
+                <p className={styles.button}>Error validating OTP</p>
+              )}
+          </form>
+        )}
     </div>
   );
-
-  
 }
